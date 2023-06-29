@@ -77,7 +77,8 @@ defmodule BoomNotifier.MixProject do
       # Dev dependencies
       {:credo, "~> 1.6.1", only: [:dev], runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
-      {:ex_doc, "~> 0.23", only: :dev}
+      {:ex_doc, "~> 0.23", only: :dev},
+      {:ssl_verify_fun, "~> 1.1.6", manager: :rebar3, override: true}
     ]
   end
 
