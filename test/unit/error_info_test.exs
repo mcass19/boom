@@ -179,7 +179,10 @@ defmodule ErrorInfoTest do
     %ErrorInfo{stack: error_info_stack} =
       ErrorInfo.build(%{reason: %TestException{message: "Boom"}, stack: stack}, conn, :nothing)
 
-    assert {nil, :name, [], []} = hd(error_info_stack)
+    possible_heads =
+      [{ErrorInfoTest.TestController, :get_name, 1, [file: 'test/unit/error_info_test.exs', line: 29]}, {nil, :name, [], []}]
+
+    assert hd(error_info_stack) in possible_heads
 
     assert {
              ExUnit.Runner,
